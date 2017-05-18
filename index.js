@@ -101,7 +101,7 @@ const checkAndAnswer = ( text, rules ) => {
 
     if ( i == rules.length) break
 
-    var rule = rules[i]
+    const rule = rules[i]
 
     if ( rule.length === 3 ) {
       status = handleAnswer( text, rule[0], rule[1], rule[2] )
