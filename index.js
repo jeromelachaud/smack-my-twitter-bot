@@ -21,9 +21,7 @@ const sentence = require('./sentence.json')
  * Returns a random integer between min (included) and max (excluded)
  * Using Math.round() will give you a non-uniform distribution!
  */
-const getRandomInt = ( min, max ) => {
-  return Math.floor(Math.random() * (max - min)) + min
-}
+const getRandomInt = ( min, max ) => Math.floor(Math.random() * (max - min)) + min
 
 /**
  * What to tweet
@@ -93,7 +91,7 @@ const handleAnswer = ( text, regex, answers, replacement ) => {
  *      [/[^a-z]sa va[^a-z]/ig, ['pas d\'accord']]
  *    ]
  */
-const checkAndAnswer = function( text, rules ) {
+const checkAndAnswer = ( text, rules ) => {
 
   let status = undefined
 
@@ -138,7 +136,7 @@ const streamParam = {
  */
 api
   .stream('statuses/filter', streamParam)
-  .on('tweet', function( tweet ) {
+  .on('tweet', ( tweet ) => {
 
     // show tweet before being filtered
     // console.log( chalk.bgBlack('Stream   —'), tweet ) // show all tweet
