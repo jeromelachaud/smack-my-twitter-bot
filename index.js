@@ -32,7 +32,7 @@ const getRandomInt = ( min, max ) => Math.floor(Math.random() * (max - min)) + m
 const tweetThat = ( tweet, message ) => {
 
   // do not answer to yourself, buddy.
-  if ( tweet.user.screen_name !== username ) {
+  if ( tweet.user.screen_name === username ) {
 
     const postParam = {
       in_reply_to_status_id: tweet.id_str,
@@ -152,16 +152,16 @@ api
     if ( _.indexOf( settings.whitelist, tweet.user.screen_name ) < 0 ) {
 
       // don't care about small accounts
-      if ( tweet.user.followers_count < settings.followerLimit ) return
+      // if ( tweet.user.followers_count < settings.followerLimit ) return
 
       // don't care about too recent accounts
-      if ( settings.yearLimit !== 0 && moment( new Date( tweet.user.created_at ) ).year() > settings.yearLimit ) return
+      // if ( settings.yearLimit !== 0 && moment( new Date( tweet.user.created_at ) ).year() > settings.yearLimit ) return
 
       // don't care about protected accounts
       if ( tweet.user.protected ) return
 
       // don't care about some languages
-      if ( !(tweet.lang === 'fr' || tweet.lang === 'en') ) return
+      if ( !(tweet.lang === 'fr') ) return
 
     }
 
@@ -195,8 +195,8 @@ api
      * Check mistakes
      */
     // do not always answer, just sometimes
-    else if ( getRandomInt(0,2) ) {
-    // else if ( true ) {
+    // else if ( getRandomInt(0,2) ) {
+    else if ( true ) {
 
       rules = [
         // [/(ai|as) [a-zA-Z]*er/ig, sentence.mistake.concat(sentence.participePassePremierGroupe), { original: 'er' }],
@@ -254,11 +254,11 @@ api
       ]
     }
 
-    const answer = checkAndAnswer( tweet.text, rules )
-
-    // tweet if there's something to tweet
-    if ( typeof answer !== 'undefined' ) {
-      tweetThat( tweet, answer )
-    }
+    // const answer = checkAndAnswer( tweet.text, rules )
+    //
+    // // tweet if there's something to tweet
+    // if ( typeof answer !== 'undefined' ) {
+    //   tweetThat( tweet, answer )
+    // }
 
   })
