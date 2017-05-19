@@ -45,8 +45,8 @@ const tweetThat = ( tweet, message ) => {
       api.post('statuses/update', postParam, ( err, data, response ) => {
 
         console.log('')
-        console.log( chalk.bgBlue( chalk.black('Tweet    —') ), chalk.bgWhite( chalk.black('@' + tweet.user.screen_name ) ) + ' ' + tweet.text )
-        console.log( chalk.bgGreen( chalk.black('Answer   —') ), chalk.bgWhite( chalk.black('@' + username ) ) + ' ' + message )
+        console.log( chalk.bgBlue( chalk.black('Tweet    —') ), chalk.bgWhite( chalk.black(`@ ${tweet.user.screen_name}` ) ) + ' ' + tweet.text )
+        console.log( chalk.bgGreen( chalk.black('Answer   —') ), chalk.bgWhite( chalk.black(`@ ${username}` ) ) + ' ' + message )
         if ( err ) console.log( chalk.bgRed( chalk.white('Error    —') ) , err )
         console.log('')
 
@@ -166,7 +166,7 @@ api
     }
 
     // show tweet after being filtered
-    console.log( chalk.bgBlack('Stream   —'), chalk.bgWhite( chalk.black('@' + tweet.user.screen_name ) ) + ' ' + tweet.text )
+    console.log( chalk.bgBlack('Stream   —'), chalk.bgWhite( chalk.black(`@ ${tweet.user.screen_name}` ) ) + ' ' + tweet.text )
     // console.log( chalk.bgBlack('Stream   —'), tweet ) // show all tweet
 
     let rules = []
